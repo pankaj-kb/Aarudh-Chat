@@ -1,24 +1,25 @@
-import { ChatEngine } from 'react-chat-engine';
-
-import ChatFeed from './components/ChatFeed';
-import LoginForm from './components/LoginForm';
+import React from 'react';
 import './App.css';
 
-const projectID = process.env.REACT_APP_PROJECT_ID;
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
 
-const App = () => {
-  if (!localStorage.getItem('username')) return <LoginForm />;
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useCollectionData } from 'react-firebase-hooks/firestore'
 
+firebase.initializeApp ({
+  //config
+})
+
+function App() {
   return (
-    <ChatEngine
-      height="100vh"
-      projectID={projectID}
-      userName={localStorage.getItem('username')}
-      userSecret={localStorage.getItem('password')}
-      renderChatFeed={(chatAppProps) => <ChatFeed {...chatAppProps} />}
-      onNewMessage={() => new Audio('./src/sounds/new_msg.mp3').play()}
-    />
+    <div className="App">
+      <header className="App-header">
+        
+      </header>
+    </div>
   );
-};
+}
 
 export default App;
